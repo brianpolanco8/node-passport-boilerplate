@@ -1,6 +1,6 @@
 const passport = require("passport");
-const LocalStrategy = require("passport-local");
 const mongoose = require("mongoose");
+const requireLogin = require("../middlewares/requireLogin");
 
 const User = mongoose.model("users");
 
@@ -9,11 +9,12 @@ module.exports = app => {
     "/api/login",
     passport.authenticate("local", { failureRedirect: "/login" }),
     function(req, res) {
-      res.send(req.user);
+      // res.send(req.user);
+      res.send(req.session.passport.user);
     }
   );
 
-  app.post("/test-url", (req, res) => {
+  app.post("/test-url", requireLogin, (req, res) => {
     console.log(req.body);
     return res.send("went well");
   });
