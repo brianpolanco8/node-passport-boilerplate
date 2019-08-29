@@ -1,0 +1,5 @@
+export const SAY_HI_REQUEST = 'SAY_HI_REQUEST'
+export const SAY_HI_SUCCESS = 'SAY_HI_SUCCESS'
+export const SAY_HI_FAILURE = 'SAY_HI_FAILURE'
+
+
